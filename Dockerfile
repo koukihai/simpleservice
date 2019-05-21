@@ -1,4 +1,8 @@
-FROM python:2.7-onbuild
-MAINTAINER Michael Hausenblas
-ENV REFRESHED_AT 2017-04-24T13:50
+FROM multiarch/alpine:armhf-latest-stable
+
+RUN apk add --update \
+    python \
+    py-tornado
+
+ADD simpleservice.py .
 CMD [ "python", "./simpleservice.py" ]
